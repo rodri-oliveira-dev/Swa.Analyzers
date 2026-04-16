@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Swa.Analyzers.Core/Swa.Analyzers.Core.csproj" />
+  <Project Path="Swa.Analyzers.SampleApp/Swa.Analyzers.SampleApp.csproj" />
+  <Project Path="Swa.Analyzers.Tests/Swa.Analyzers.Tests.csproj" />
+</Solution>
