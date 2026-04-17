@@ -8,7 +8,7 @@ Current focus:
 
 Active rule:
 
-- ARCH003 - Prohibit NotBeNull() in tests (implemented)
+- ARCH004 - Enforce _sut naming in unit tests (implemented)
 
 Open design questions:
 
@@ -17,6 +17,7 @@ Open design questions:
 Known risks:
 
 - Test detection is heuristic (based on known test-framework attributes). If a repo uses a different test framework or custom attributes, the analyzer may stay silent.
+- ARCH004 uses a conservative SUT identification heuristic (based on test type name suffix and a single matching field type). If the test naming pattern differs, or if multiple candidates exist, the analyzer may stay silent.
 
 Pending follow-up items:
 

@@ -15,6 +15,7 @@ Internal Roslyn analyzers focused on architecture, reliability and test quality.
 | ARCH001 | Avoid async void outside event handlers | Reliability | Warning          |
 | ARCH002 | Avoid Task.ContinueWith                 | Reliability | Warning          |
 | ARCH003 | Prohibit NotBeNull() in tests           | TestQuality | Info             |
+| ARCH004 | Enforce _sut naming in unit tests       | TestQuality | Info             |
 
 ## Install
 Add the analyzer package to the target solution as an analyzer reference or publish it internally as a NuGet package.
@@ -25,6 +26,7 @@ Add the analyzer package to the target solution as an analyzer reference or publ
 dotnet_diagnostic.ARCH001.severity = warning
 dotnet_diagnostic.ARCH002.severity = warning
 dotnet_diagnostic.ARCH003.severity = info
+dotnet_diagnostic.ARCH004.severity = info
 ```
 
 ## Run tests
