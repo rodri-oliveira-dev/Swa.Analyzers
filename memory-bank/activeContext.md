@@ -8,7 +8,7 @@ Current focus:
 
 Active rule:
 
-- ARCH004 - Enforce _sut naming in unit tests (implemented)
+- ARCH005 - Restrict usage of Arg.Any() (implemented)
 
 Open design questions:
 
@@ -18,6 +18,7 @@ Known risks:
 
 - Test detection is heuristic (based on known test-framework attributes). If a repo uses a different test framework or custom attributes, the analyzer may stay silent.
 - ARCH004 uses a conservative SUT identification heuristic (based on test type name suffix and a single matching field type). If the test naming pattern differs, or if multiple candidates exist, the analyzer may stay silent.
+- ARCH005 restricts Arg.Any() based on a specific NSubstitute call-chain shape (DidNotReceive/DidNotReceiveWithAnyArgs). If teams use different negative-assertion helpers/wrappers, the analyzer will report or stay silent depending on symbol shapes.
 
 Pending follow-up items:
 
