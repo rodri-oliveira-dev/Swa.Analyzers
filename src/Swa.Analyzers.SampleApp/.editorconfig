@@ -1,0 +1,32 @@
+# Ajustes específicos para o SampleApp.
+#
+# O repositório eleva a categoria "Reliability" para error no build.
+# Aqui, queremos manter exemplos inválidos que disparem diagnósticos sem quebrar a compilação.
+
+[**/*.cs]
+dotnet_diagnostic.ARCH008.severity = warning
+
+# O repositório eleva a categoria "Reliability" para error.
+# Aqui mantemos exemplos intencionalmente inválidos para demonstração.
+dotnet_diagnostic.ARCH001.severity = warning
+dotnet_diagnostic.ARCH002.severity = warning
+
+# Regras de qualidade de teste (default Info) — elevar para warning aqui melhora a demonstração manual.
+dotnet_diagnostic.ARCH003.severity = warning
+dotnet_diagnostic.ARCH004.severity = warning
+dotnet_diagnostic.ARCH005.severity = warning
+dotnet_diagnostic.ARCH006.severity = warning
+
+# ARCH007 já cai em categoria Performance (warning), mas deixamos explícito por consistência.
+dotnet_diagnostic.ARCH007.severity = warning
+
+# Stubs existem apenas para habilitar o “contexto de teste” das regras ARCH003-ARCH006/005.
+# Suprimimos warnings de estilo/qualidade nelas para manter o output de build focado nos ARCH*.
+[Stubs/*.cs]
+dotnet_diagnostic.CA1822.severity = none
+dotnet_diagnostic.IDE0052.severity = none
+dotnet_diagnostic.IDE0290.severity = none
+
+# Pequenas exceções para manter exemplos didáticos sem poluir o build.
+[Arch004/Calculator.cs]
+dotnet_diagnostic.CA1822.severity = none
