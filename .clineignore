@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+.git/
+zip/
+**/*.zip
+**/TestResults/
+**/coverage/
+**/*.nupkg
+**/*.snupkg

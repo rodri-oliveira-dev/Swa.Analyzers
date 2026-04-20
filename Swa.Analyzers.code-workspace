@@ -1,0 +1,30 @@
+{
+    "folders": [
+        {
+            "path": ".",
+            "name": "Swa.Analyzers"
+        }
+    ],
+    "settings": {
+        "dotnet.defaultSolution": "Swa.Analyzers.slnx",
+        "files.exclude": {
+            "**/bin": true,
+            "**/obj": true,
+            "**/.vs": true
+        },
+        "search.exclude": {
+            "**/bin": true,
+            "**/obj": true,
+            "**/.vs": true
+        },
+        "files.associations": {
+            "*.slnx": "xml"
+        },
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "markdown.preview.mermaid": true,
+        "markdown.preview.experimental.useMermaid": true
+    }
+}

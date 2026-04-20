@@ -1,49 +1,74 @@
-# ARCH001 - Permitir apenas NSubstitute como biblioteca de mock
+# ARCH001: Avoid async void outside event handlers
 
-## Objetivo
-Garantir padronização do framework de mock em testes, bloqueando bibliotecas não aprovadas (ex.: Moq, FakeItEasy, Rhino Mocks) e incentivando o uso exclusivo de NSubstitute.
+## Objective
+Prevent `async void` in methods, local functions and anonymous functions, except for standard event handlers.
 
-## Motivação
-Padronização reduz custo de manutenção, facilita leitura de testes e evita dependências redundantes de bibliotecas com APIs divergentes.
+## Motivation
+`async void` cannot be awaited and propagates exceptions through the synchronization context instead of through a `Task`. This makes failures harder to observe, test and compose. In application code, `async Task` is the safer default.
 
-## Código inválido
+## Invalid
+
 ```csharp
-using Moq;
-
-var customerRepo = new Mock<ICustomerRepository>();
+public async void PublishAsync()
+{
+    await _client.SendAsync();
+}
 ```
 
-## Código válido
 ```csharp
-using NSubstitute;
-
-var customerRepo = Substitute.For<ICustomerRepository>();
+Action action = async () =>
+{
+    await Task.Delay(1);
+};
 ```
 
-## Como configurar
+## Valid
+
+```csharp
+public async Task PublishAsync()
+{
+    await _client.SendAsync();
+}
+```
+
+```csharp
+button.Click += async (sender, e) =>
+{
+    await Task.Delay(1);
+};
+```
+
+```csharp
+public async void OnClick(object? sender, EventArgs e)
+{
+    await Task.Delay(1);
+}
+```
+
+## How to configure
+This rule does not expose custom `.editorconfig` options in the first version.
+
+Severity can be configured normally:
+
 ```ini
-# Analisa apenas projetos de teste (padrão: true)
-dotnet_diagnostic.ARCH001.only_test_projects = true
-
-# Sobrescreve bibliotecas/namespace bloqueados (separador: , ; ou |)
-dotnet_diagnostic.ARCH001.blocked_namespaces = Moq,FakeItEasy,Rhino.Mocks
-
-# Define padrões para detectar assembly de teste
-# (padrão: test;tests;spec)
-dotnet_diagnostic.ARCH001.test_project_patterns = test;tests;spec
+# .editorconfig
+[*.cs]
+dotnet_diagnostic.ARCH001.severity = warning
 ```
 
-## Limitações conhecidas
-- A detecção de "projeto de teste" usa heurística por nome de assembly e referências; em cenários incomuns, configure `only_test_projects = false`.
-- Wrappers internos que encapsulem bibliotecas bloqueadas podem exigir ajuste de configuração.
+## Known limitations
+- The rule treats the classic `object sender, EventArgs e` pattern, including derived `EventArgs`, as an allowed event handler shape.
+- Custom delegate-based events that do not inherit from `EventArgs` are not exempted by this first version.
+- The rule intentionally does not offer a code fix because changing a return type from `void` to `Task` may require changes in callers, interfaces, overrides or delegates.
 
-## Quando não usar
-- Equipes que explicitamente aceitam múltiplos frameworks de mock.
+## When not to use
+Do not disable this rule broadly. If the code truly must follow an event-handler signature, keep the event handler narrow and move the real work into an `async Task` method.
 
-## Impacto esperado
-- Maior consistência entre testes.
-- Menor acoplamento com múltiplas bibliotecas de mocking.
+## Expected impact
+- Fewer hidden async failures
+- Better testability
+- Cleaner async composition
+- Lower risk of fire-and-forget mistakes disguised as regular control flow
 
-## Observações sobre falsos positivos/heurísticas
-- O analyzer não analisa strings, comentários ou documentação.
-- O diagnóstico é emitido para uso semântico/sintático real (using, criação de objeto, invocações e referências de membros).
+## False positives and heuristics
+The main heuristic is the event-handler exemption. If the solution relies heavily on custom event delegates, consider extending the rule in a later version to recognize project-specific delegate patterns.
