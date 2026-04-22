@@ -8,7 +8,7 @@ Current focus:
 
 Active rule:
 
-- ARCH008 - Prohibit manual path composition (implemented)
+- ARCH009 - Prohibit sync over async blocking calls (implemented)
 
 Open design questions:
 
@@ -24,6 +24,8 @@ Known risks:
 - ARCH007 is heuristic and intentionally conservative: it targets self-referential string concatenation assignments inside loop bodies. It can still report in loops that execute only a few times (the analyzer doesn't estimate runtime iteration counts).
 
 - ARCH008 is intentionally conservative and sink-based: it reports only when a manual composition (string `+` or interpolated string) is passed directly into known filesystem sinks. If a path is composed earlier and stored in a variable, the analyzer stays silent.
+
+- ARCH009 is intentionally scoped to `Task`, `Task<T>`, `ValueTask`, and `ValueTask<T>`. Custom awaitables with `.GetAwaiter().GetResult()` are not flagged because they may have different blocking semantics (e.g., always-completed value types).
 
 Pending follow-up items:
 

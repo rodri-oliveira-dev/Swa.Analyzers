@@ -10,3 +10,4 @@
 | ARCH006 | TestQuality | Info     | Warn on FluentAssertions exclusions in BeEquivalentTo. |
 | ARCH007 | Performance | Info     | Detect string concatenation inside loops.              |
 | ARCH008 | Reliability | Info     | Prohibit manual path composition in filesystem sinks.  |
+| ARCH009 | Reliability | Warning  | Prohibit synchronous blocking of async operations.     |

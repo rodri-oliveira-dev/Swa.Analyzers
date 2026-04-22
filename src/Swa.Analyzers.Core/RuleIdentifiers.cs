@@ -10,4 +10,5 @@ internal static class RuleIdentifiers
     public const string WarnOnExcludingInBeEquivalentTo = "ARCH006";
     public const string DetectStringConcatenationInsideLoops = "ARCH007";
     public const string ProhibitManualPathComposition = "ARCH008";
+    public const string ProhibitSyncOverAsyncBlockingCalls = "ARCH009";
 }

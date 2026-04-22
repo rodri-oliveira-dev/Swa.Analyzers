@@ -22,6 +22,7 @@ Documentação detalhada de cada regra: `docs/rules/` (um arquivo por regra). Os
 | ARCH006 | Warn on exclusions in BeEquivalentTo()   | TestQuality | Info              | `docs/rules/ARCH006.md` |
 | ARCH007 | Detect string concatenation inside loops | Performance | Info              | `docs/rules/ARCH007.md` |
 | ARCH008 | Prohibit manual path composition         | Reliability | Info              | `docs/rules/ARCH008.md` |
+| ARCH009 | Prohibit sync over async blocking calls  | Reliability | Warning           | `docs/rules/ARCH009.md` |
 
 ## Como configurar
 
