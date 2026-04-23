@@ -20,6 +20,10 @@ public static class Arg
     {
         return default!;
     }
+
+    // ARCH014 targets this method name in the NSubstitute.Arg type.
+    public static T Is<T>(T value) => default!;
+    public static T Is<T>(Func<T, bool> predicate) => default!;
 }
 
 public static class SubstituteExtensions

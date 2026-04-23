@@ -23,6 +23,7 @@ Current status:
 - ARCH011: done
 - ARCH012: done
 - ARCH013: done
+- ARCH014: done
 
 Notable design decisions:
 
@@ -31,6 +32,7 @@ Notable design decisions:
 - ARCH005 restricts NSubstitute `Arg.Any<T>()` usage by allowing it only as a direct argument inside `DidNotReceive()` / `DidNotReceiveWithAnyArgs()` call chains.
 - ARCH006 warns on FluentAssertions equivalency exclusions by reporting any `Excluding*` invocation (from `FluentAssertions.Equivalency`) found inside the options delegate passed to `BeEquivalentTo(...)`. The rule is scoped to test contexts using the same heuristic as ARCH003.
 - ARCH011 prohibits blocking operations and unawaited asynchronous calls inside instance and static constructors. It reuses the same semantic task-type detection from ARCH009 and adds fire-and-forget detection for discarded Task/ValueTask invocations.
+- ARCH014 restricts NSubstitute `Arg.Is` usage by reporting any `Arg.Is` invocation found inside a test type (a type that contains at least one known test method). The rule uses the same test-type detection heuristic as ARCH003.
 
 Also track:
 

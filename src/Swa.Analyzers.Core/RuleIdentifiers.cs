@@ -15,4 +15,5 @@ internal static class RuleIdentifiers
     public const string ProhibitAsyncOrBlockingInConstructors = "ARCH011";
     public const string PreferDateTimeOffsetOverDateTime = "ARCH012";
     public const string RestrictMockingFrameworksToNSubstitute = "ARCH013";
+    public const string PreferIsEquivalentOverArgIs = "ARCH014";
 }

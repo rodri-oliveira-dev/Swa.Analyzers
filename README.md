@@ -27,6 +27,7 @@ Documentação detalhada de cada regra: `docs/rules/` (um arquivo por regra). Os
 | ARCH011 | Prohibit async or blocking logic in constructors | Reliability | Warning           | `docs/rules/ARCH011.md` |
 | ARCH012 | Prefer DateTimeOffset over DateTime              | Reliability | Info              | `docs/rules/ARCH012.md` |
 | ARCH013 | Restrict mocking frameworks to NSubstitute       | TestQuality | Info              | `docs/rules/ARCH013.md` |
+| ARCH014 | Prefer Is.Equivalent over NSubstitute Arg.Is     | TestQuality | Info              | `docs/rules/ARCH014.md` |
 
 ## Como configurar
 
