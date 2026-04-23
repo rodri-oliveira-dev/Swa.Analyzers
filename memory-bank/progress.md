@@ -19,6 +19,9 @@ Current status:
 - ARCH007: done
 - ARCH008: done
 - ARCH009: done
+- ARCH010: done
+- ARCH011: done
+- ARCH012: done
 
 Notable design decisions:
 
@@ -26,6 +29,7 @@ Notable design decisions:
 - ARCH004 enforces `_sut` only when it can confidently identify the SUT: it infers the SUT type from the test type name suffix (Tests/Test/Specs/Spec) and reports only when there is exactly one instance field whose type name matches that inferred SUT type.
 - ARCH005 restricts NSubstitute `Arg.Any<T>()` usage by allowing it only as a direct argument inside `DidNotReceive()` / `DidNotReceiveWithAnyArgs()` call chains.
 - ARCH006 warns on FluentAssertions equivalency exclusions by reporting any `Excluding*` invocation (from `FluentAssertions.Equivalency`) found inside the options delegate passed to `BeEquivalentTo(...)`. The rule is scoped to test contexts using the same heuristic as ARCH003.
+- ARCH011 prohibits blocking operations and unawaited asynchronous calls inside instance and static constructors. It reuses the same semantic task-type detection from ARCH009 and adds fire-and-forget detection for discarded Task/ValueTask invocations.
 
 Also track:
 

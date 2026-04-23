@@ -8,7 +8,7 @@ Current focus:
 
 Active rule:
 
-- ARCH009 - Prohibit sync over async blocking calls (implemented)
+- ARCH012 - Prefer DateTimeOffset over DateTime (implemented)
 
 Open design questions:
 
@@ -27,9 +27,14 @@ Known risks:
 
 - ARCH009 is intentionally scoped to `Task`, `Task<T>`, `ValueTask`, and `ValueTask<T>`. Custom awaitables with `.GetAwaiter().GetResult()` are not flagged because they may have different blocking semantics (e.g., always-completed value types).
 
+- ARCH010 detects overloads using a conservative heuristic (exactly one additional parameter of type `CancellationToken` with matching prefix types). Extension methods with such overloads are not currently detected. Tokens available only through complex closure captures may also be missed by `LookupSymbols`.
+
+- ARCH011 targets only `System.Threading.Tasks.Task`, `Task<T>`, `ValueTask`, and `ValueTask<T>`. Custom awaitable types are not flagged. Unawaited async calls are reported only as expression statements (fire-and-forget), not when assigned or passed as arguments.
+
 Pending follow-up items:
 
 - Consider expanding supported test frameworks/attributes if needed by consumers.
+- Consider adding support for extension-method overloads with CancellationToken in ARCH010.
 
 When working on a rule, update this file with:
 

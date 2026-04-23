@@ -6,6 +6,9 @@
 [**/*.cs]
 dotnet_diagnostic.ARCH008.severity = warning
 dotnet_diagnostic.ARCH009.severity = warning
+dotnet_diagnostic.ARCH010.severity = warning
+dotnet_diagnostic.ARCH011.severity = warning
+dotnet_diagnostic.ARCH012.severity = warning
 
 # O repositório eleva a categoria "Reliability" para error.
 # Aqui mantemos exemplos intencionalmente inválidos para demonstração.
@@ -31,3 +34,12 @@ dotnet_diagnostic.IDE0290.severity = none
 # Pequenas exceções para manter exemplos didáticos sem poluir o build.
 [Arch004/Calculator.cs]
 dotnet_diagnostic.CA1822.severity = none
+
+[Arch010/*.cs]
+dotnet_diagnostic.CA1822.severity = none
+dotnet_diagnostic.CA2016.severity = none
+
+[Arch011/*.cs]
+dotnet_diagnostic.IDE0052.severity = none
+dotnet_diagnostic.IDE0059.severity = none
+dotnet_diagnostic.IDE0290.severity = none
