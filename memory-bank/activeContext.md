@@ -8,7 +8,7 @@ Current focus:
 
 Active rule:
 
-- ARCH012 - Prefer DateTimeOffset over DateTime (implemented)
+- ARCH013 - Restrict mocking frameworks to NSubstitute (implemented)
 
 Open design questions:
 
@@ -31,10 +31,14 @@ Known risks:
 
 - ARCH011 targets only `System.Threading.Tasks.Task`, `Task<T>`, `ValueTask`, and `ValueTask<T>`. Custom awaitable types are not flagged. Unawaited async calls are reported only as expression statements (fire-and-forget), not when assigned or passed as arguments.
 
+- ARCH013 is intentionally scoped to a small set of mocking frameworks (Moq and FakeItEasy) in the first version. Other frameworks will not be reported until explicitly added.
+
 Pending follow-up items:
 
 - Consider expanding supported test frameworks/attributes if needed by consumers.
 - Consider adding support for extension-method overloads with CancellationToken in ARCH010.
+
+- Consider expanding the list of detected mocking frameworks in ARCH013 (e.g., Rhino Mocks, JustMock), if requested by consumers.
 
 When working on a rule, update this file with:
 

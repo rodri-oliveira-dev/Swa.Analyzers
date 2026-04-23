@@ -14,3 +14,4 @@
 | ARCH010 | Reliability | Warning  | Enforce CancellationToken propagation.                   |
 | ARCH011 | Reliability | Warning  | Prohibit asynchronous or blocking logic in constructors. |
 | ARCH012 | Reliability | Info     | Prefer DateTimeOffset over DateTime.                     |
+| ARCH013 | TestQuality | Info     | Restrict mocking frameworks to NSubstitute.              |

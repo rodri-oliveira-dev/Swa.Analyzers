@@ -22,6 +22,7 @@ Current status:
 - ARCH010: done
 - ARCH011: done
 - ARCH012: done
+- ARCH013: done
 
 Notable design decisions:
 

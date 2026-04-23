@@ -20,6 +20,7 @@ dotnet_diagnostic.ARCH003.severity = warning
 dotnet_diagnostic.ARCH004.severity = warning
 dotnet_diagnostic.ARCH005.severity = warning
 dotnet_diagnostic.ARCH006.severity = warning
+dotnet_diagnostic.ARCH013.severity = warning
 
 # ARCH007 já cai em categoria Performance (warning), mas deixamos explícito por consistência.
 dotnet_diagnostic.ARCH007.severity = warning

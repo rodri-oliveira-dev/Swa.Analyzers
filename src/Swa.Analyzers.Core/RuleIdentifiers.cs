@@ -14,4 +14,5 @@ internal static class RuleIdentifiers
     public const string EnforceCancellationTokenPropagation = "ARCH010";
     public const string ProhibitAsyncOrBlockingInConstructors = "ARCH011";
     public const string PreferDateTimeOffsetOverDateTime = "ARCH012";
+    public const string RestrictMockingFrameworksToNSubstitute = "ARCH013";
 }
